@@ -9,7 +9,8 @@ class Appointment extends Component {
   render = () => {
     return (
       <div>
-        <h4>Make an appointment</h4>
+        <div className="mui--text-center headerInfo">Make an appointment</div>
+
       </div>
     );
   };
