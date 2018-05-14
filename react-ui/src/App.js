@@ -8,7 +8,7 @@ import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 // import { CONFIG } from "./config/globals";
 
 import Appointment from "./containers/Appointment";
-
+import Container from 'muicss/lib/react/container';
 import "./style/base.css";
 
 class App extends Component {
@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     // const msg = this.ping(this.pingCallback);
     return (
-      <div>
+      <Container>
         <MuiThemeProvider>
           <BrowserRouter>
             <div className="container">
@@ -40,7 +40,7 @@ class App extends Component {
             </div>
           </BrowserRouter>
         </MuiThemeProvider>
-      </div>
+      </Container>
     );
   }
 }
