@@ -7,10 +7,18 @@ class Appointment extends Component {
     super(props);
   }
 
+  componentDidMount = () => {
+
+  };
+
+  onAppointmentSlotClicked = (event) => {
+    console.log('onAppointmentSlotClicked slot id:', event.target.id);
+  }
+
   renderTimeSlot = () => {
     const apptSlots = ["9 am", "10 am", "11 am", "12 pm", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm"];
     return (
-      <AppointmentSlot slots={apptSlots}/>
+      <AppointmentSlot slots={apptSlots} onAppointmentSlotClicked={this.onAppointmentSlotClicked}/>
     );
   };
 
@@ -18,9 +26,7 @@ class Appointment extends Component {
     return (
       <div>
         <div className="mui--text-center headerInfo">Make an appointment</div>
-        <h3>
-          Choose an appointment time
-        </h3>
+        <h3>Choose an appointment time</h3>
         <div>{this.renderTimeSlot()}</div>
       </div>
     );

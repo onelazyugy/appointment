@@ -12,25 +12,7 @@ import Container from 'muicss/lib/react/container';
 import "./style/base.css";
 
 class App extends Component {
-  // ping = (pingCallback) => {
-  //   let msg = "";
-  //   axios.get(CONFIG.url + "/api/ping").then(function (response) {
-  //     msg = response.data.message;
-  //     pingCallback(msg);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //     pingCallback(error);
-  //   });
-  // }
-
-  // pingCallback = (msg) => {
-  //   console.log('ping response from pingCallback:', msg);
-  //   return msg;
-  // };
-
   render() {
-    // const msg = this.ping(this.pingCallback);
     return (
       <Container>
         <MuiThemeProvider>

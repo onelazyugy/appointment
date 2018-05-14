@@ -1,7 +1,7 @@
 import React from "react";
 import Paper from 'material-ui/Paper';
 
-const AppointmentSlot = ({slots}) => {
+const AppointmentSlot = ({slots, onAppointmentSlotClicked}) => {
     const style = {
         height: 100,
         width: 100,
@@ -12,7 +12,7 @@ const AppointmentSlot = ({slots}) => {
     };
     let apptTimeSlots = [];
     slots.map((slot, index)=>{
-        apptTimeSlots.push(<Paper key={index} id={index} style={style} zDepth={1}>{slot}</Paper>);
+        apptTimeSlots.push(<Paper key={index} id={index} style={style} zDepth={1} onClick={onAppointmentSlotClicked}>{slot}</Paper>);
     });
     return (
         <div>{apptTimeSlots}</div>
