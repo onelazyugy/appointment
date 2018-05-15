@@ -8,7 +8,7 @@ class Appointment extends Component {
   }
 
   componentDidMount = () => {
-
+    //fetch appointment from server
   };
 
   onAppointmentSlotClicked = (event) => {

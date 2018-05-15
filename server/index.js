@@ -4,15 +4,13 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
+const router = require('./routes');
 
 const port = process.env.PORT || 5001;
 let app = express();
+router(app);
 app.use(cors());
 app.use(bodyParser.json());
-
-app.get('/api/ping', function (req, res) {
-    res.send('{"message":"pong!"}');
-});
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 
