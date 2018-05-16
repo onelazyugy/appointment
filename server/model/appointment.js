@@ -1,7 +1,4 @@
 exports.appointment = {
-	"modal": {
-		"isOpen": false
-	},
 	"slots": [{
 			"id": 0,
 			"time": "9 am",

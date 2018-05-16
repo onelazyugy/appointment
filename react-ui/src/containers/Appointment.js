@@ -40,7 +40,7 @@ class Appointment extends Component {
   };
 
   render = () => {
-    const isOpen = this.props.modalState.isOpen === undefined ? false : true;
+    const isOpen = this.props.modalState.isOpen === undefined ? false : this.props.modalState.isOpen;
     return (
       <div>
         <BookAppointmentModal isOpen={isOpen} handleClose={this.handleClose}/>
