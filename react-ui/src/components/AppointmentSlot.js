@@ -12,7 +12,7 @@ const AppointmentSlot = ({slots, onAppointmentSlotClicked}) => {
     };
     let apptTimeSlots = [];
     slots.map((slot, index)=>{
-        apptTimeSlots.push(<Paper key={index} id={index} style={style} zDepth={1} onClick={onAppointmentSlotClicked}>{slot}</Paper>);
+        apptTimeSlots.push(<Paper key={index} id={index} style={style} zDepth={1} onClick={onAppointmentSlotClicked}>{slot.time}</Paper>);
     });
     return (
         <div>{apptTimeSlots}</div>

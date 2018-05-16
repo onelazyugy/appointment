@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import { appointmentReducer } from "./appointmentReducer";
+import { appointmentReducer, modalStateReducer } from "./appointmentReducer";
 
 export default combineReducers({
-    appointmentReducer
+    appointmentReducer, 
+    modalStateReducer
 });

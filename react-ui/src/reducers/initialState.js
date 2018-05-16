@@ -1,3 +1,4 @@
 export default {
-    appointmentDetails: {}
+    appointments: {},
+    modalState: {isOpen: false}
 }
