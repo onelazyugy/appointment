@@ -8,9 +8,9 @@ const router = require('./routes');
 
 const port = process.env.PORT || 5001;
 let app = express();
-router(app);
 app.use(cors());
 app.use(bodyParser.json());
+router(app);
 
 app.use(express.static(path.resolve(__dirname, '../react-ui/build')));
 

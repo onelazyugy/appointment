@@ -1,17 +1,11 @@
 const controller = require("../controller/appointment_controller");
 
 module.exports = function (app) {
-    app.get('/api/appointments', (req, res) => {
-        res.send(controller.getAppointments());
-    });
+    //get initial appointments
+    app.get('/api/appointments', controller.appointments);
 
-    //update with username and phone
-    app.put('/api/appointments/:id', (req, res) => {
-        const id = parseInt(req.params.id);
-        const updateAppointment = req.body;
-        console.log('updateAppointment:', updateAppointment);
-        res.send(controller.update(id, updateAppointment));
-    });
+    //update appointment username and phone
+    app.put('/api/appointments/:id', controller.update);
 
     //health check
     app.get('/api/ping', function (req, res) {
