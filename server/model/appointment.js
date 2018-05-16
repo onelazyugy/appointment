@@ -1,22 +1,30 @@
-const appointment = [
+exports.appointment = [
     {
         "id": 0,
         "time": "9 am",
-        "isRed": false
+        "isSlotTaken": false,
+        "name": "",
+        "phone": ""
     },
     {
         "id": 1,
         "time": "10 am",
-        "isRed": false
+        "isSlotTaken": false,
+        "name": "",
+        "phone": ""
     },
     {
         "id": 2,
         "time": "11 am",
-        "isRed": false
+        "isSlotTaken": false,
+        "name": "",
+        "phone": ""
     },
     {
         "id": 3,
         "time": "12 pm",
-        "isRed": false
+        "isSlotTaken": false,
+        "name": "",
+        "phone": ""
     }
-]
+];
