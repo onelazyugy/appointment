@@ -99,9 +99,6 @@ const mapDispatchToProps = dispatch => ({
     onUpdateModalData(modalData) {
         dispatch(updateModalData(modalData));
     },
-    onBookAppointment(appointment) {
-        dispatch(bookAppointment(appointment));
-    },
     onRetrieveAppointments() {
         dispatch(retrieveAppointments());
     }

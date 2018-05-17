@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AppointmentSlot from "../components/AppointmentSlot";
 import { retrieveAppointments, updateModalData } from "../actions/appointmentActions";
 import BookAppointmentModal from "./BookAppointmentModal";
+import _ from "lodash";
 
 class Appointment extends Component {
   constructor(props) {
@@ -14,12 +15,13 @@ class Appointment extends Component {
   };
 
   onAppointmentSlotClicked = (event) => {
+    const selectedAppt = _.find(this.props.appointments.slots, {'id': parseInt(event.target.id)});
     const modalData = {
       isOpen: true,
       appointmentId: event.target.id,
       userInfo: {
-        name: "",
-        phone: ""
+        name: selectedAppt.name,
+        phone: selectedAppt.phone
       }
     }
     this.props.onUpdateModalData(modalData);
