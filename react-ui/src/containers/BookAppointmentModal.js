@@ -4,7 +4,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from "react-redux";
-import { updateModalData, bookAppointment } from "../actions/appointmentActions";
+import { updateModalData, bookAppointment, retrieveAppointments } from "../actions/appointmentActions";
 import _ from "lodash";
 
 class BookAppointmentModal extends React.Component {
@@ -21,8 +21,6 @@ class BookAppointmentModal extends React.Component {
     };
 
     onSubmit = () => {
-        console.log('submit:', this.props.modalData);
-        console.log('appointments:', this.props.appointments);
         const appointment = {
             id: this.props.modalData.appointmentId,
             name: this.props.modalData.userInfo.name,
@@ -30,6 +28,8 @@ class BookAppointmentModal extends React.Component {
         }
         //make ajax call to update, if success from node, then update this.props.appointments and close modal
         this.props.onBookAppointment(appointment);
+        //update the appointment modal for UI
+        this.props.onRetrieveAppointments();
     };
 
     handleClose = () => {
@@ -92,6 +92,9 @@ const mapDispatchToProps = dispatch => ({
     },
     onBookAppointment(appointment) {
         dispatch(bookAppointment(appointment));
+    },
+    onRetrieveAppointments() {
+        dispatch(retrieveAppointments());
     }
 });
 

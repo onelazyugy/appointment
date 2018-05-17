@@ -1,9 +1,11 @@
-const appointments = require("../model/appointment");
+let appointments = require("../model/appointment");
+const _ = require("lodash");
 
 /**
  * load all of the appointments
  */
 exports.getAppointments = function() {
+    console.log('get appointment:', appointments);
     return appointments;
 };
 
@@ -20,5 +22,20 @@ exports.updateAppointment = function(id, updateAppointment) {
  * @param {*} appointment 
  */
 exports.bookAppointment = function(appointment) {
-    return {"status": "success"};
+    const index = _.findIndex(appointments.appointment.slots, {id: parseInt(appointment.id)});
+    let isSuccess = false;
+    let selectedAppt = {};
+    if(index !== -1) {
+        selectedAppt = _.find(appointments.appointment.slots, {'id': parseInt(appointment.id)});
+        appointments.appointment.slots.map((slot)=>{
+            isSuccess = true;
+            if(slot.id === parseInt(appointment.id)) {
+                slot.isSlotTaken = true;
+                slot.name = appointment.name;
+                slot.phone = appointment.phone;
+            }
+        });
+    }
+    // console.log('appointments after booked:', appointments);
+    return {isSuccess: isSuccess};
 }

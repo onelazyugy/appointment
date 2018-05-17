@@ -13,7 +13,9 @@ export const appointmentReducer = (state = initialState, action) => {
 export const modalDataReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.MODAL_OPEN:
-        return { ...action.payload };
+            return { ...action.payload };
+        case types.MODAL_CLOSE:
+            return { ...action.payload }
         default:
             return state;
     }

@@ -29,15 +29,12 @@ export const bookAppointment = (appointment) => dispatch => {
     const body = {}
     axios.post(url + '/api/appointment', appointment).then(result => {
         let response = result.data;
-        console.log('response:', response);
-        // if (response.appointment.slots.length > 0) {
-        //   dispatch({
-        //     type: types.RETRIEVE_APPOINTMENT,
-        //     payload: response.appointment
-        //   });
-        // } else {
-          
-        // }
+        if (response.isSuccess) {
+          dispatch({
+            type: types.MODAL_CLOSE,
+            payload: {isOpen: false}
+          });
+        }
       })
       .catch(error => {
           console.error(error);
