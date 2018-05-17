@@ -36,6 +36,5 @@ exports.bookAppointment = function(appointment) {
             }
         });
     }
-    // console.log('appointments after booked:', appointments);
     return {isSuccess: isSuccess};
 }

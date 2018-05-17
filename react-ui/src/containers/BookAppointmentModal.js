@@ -4,8 +4,9 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from "react-redux";
-import { updateModalData, bookAppointment, retrieveAppointments } from "../actions/appointmentActions";
+import { updateModalData, retrieveAppointments } from "../actions/appointmentActions";
 import _ from "lodash";
+import { bookAppointment } from "../util/ajaxUtil";
 
 class BookAppointmentModal extends React.Component {
     onNameChange = (event) => {
@@ -26,10 +27,18 @@ class BookAppointmentModal extends React.Component {
             name: this.props.modalData.userInfo.name,
             phone: this.props.modalData.userInfo.phone
         }
-        //make ajax call to update, if success from node, then update this.props.appointments and close modal
-        this.props.onBookAppointment(appointment);
-        //update the appointment modal for UI
-        this.props.onRetrieveAppointments();
+        bookAppointment(this.bookAppointmentCallback, appointment);
+    };
+
+    bookAppointmentCallback = (response) => {
+        if(response.isSuccess) {
+            //close modal
+            let clonedModalData = Object.assign({}, this.props.modalData);
+            clonedModalData.isOpen = false;
+            this.props.onUpdateModalData(clonedModalData);
+            //retrieve appointments
+            this.props.onRetrieveAppointments();
+        }
     };
 
     handleClose = () => {
