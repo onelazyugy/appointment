@@ -24,13 +24,30 @@ export const retrieveAppointments = () => dispatch => {
     });
 };
 
-export const updateModalState = (isOpen) => dispatch => {
-    const modalState = {
-        isOpen: isOpen
-    }
+export const bookAppointment = (id) => dispatch => {
+    const url = CONFIG.url;
+    const body = 
+    axios.put('/api/profile' + id, body).then(result => {
+        let response = result.data;
+        // if (response.appointment.slots.length > 0) {
+        //   dispatch({
+        //     type: types.RETRIEVE_APPOINTMENT,
+        //     payload: response.appointment
+        //   });
+        // } else {
+          
+        // }
+      })
+      .catch(error => {
+          console.error(error);
+      });
+  };
+
+
+export const updateModalData = (modalData) => dispatch => {
     dispatch({
         type: types.MODAL_OPEN,
-        payload: modalState
+        payload: modalData
       });
 };
 

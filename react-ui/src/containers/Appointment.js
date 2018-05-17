@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import AppointmentSlot from "../components/AppointmentSlot";
-import {retrieveAppointments, updateModalState} from "../actions/appointmentActions";
-import BookAppointmentModal from "../components/BookAppointmentModal";
+import { retrieveAppointments, updateModalData } from "../actions/appointmentActions";
+import BookAppointmentModal from "./BookAppointmentModal";
 
 class Appointment extends Component {
   constructor(props) {
@@ -10,40 +10,34 @@ class Appointment extends Component {
   }
 
   componentDidMount = () => {
-    //fetch appointment from server
     this.props.onRetrieveAppointments();
   };
 
   onAppointmentSlotClicked = (event) => {
-    console.log('onAppointmentSlotClicked slot id:', event.target.id);
-    //call redux to open the modal and make a POST
-    this.props.onUpdateModalState(true);
-
+    const modalData = {
+      isOpen: true,
+      appointmentId: event.target.id,
+      userInfo: {
+        name: "",
+        phone: ""
+      }
+    }
+    this.props.onUpdateModalData(modalData);
   }
 
-  onSubmitAppointment = () => {
-
-  };
-
-  handleClose = () => {
-    this.props.onUpdateModalState(false);
-  };
-
   renderTimeSlot = () => {
-    console.log(this.props.appointments);
-    if(this.props.appointments.slots !== undefined && this.props.appointments.slots.length > 0) {
+    if (this.props.appointments.slots !== undefined && this.props.appointments.slots.length > 0) {
       const slots = this.props.appointments.slots;
       return (
-        <AppointmentSlot slots={slots} onAppointmentSlotClicked={this.onAppointmentSlotClicked}/>
+        <AppointmentSlot slots={slots} onAppointmentSlotClicked={this.onAppointmentSlotClicked} />
       );
     }
   };
 
   render = () => {
-    const isOpen = this.props.modalState.isOpen === undefined ? false : this.props.modalState.isOpen;
     return (
       <div>
-        <BookAppointmentModal isOpen={isOpen} handleClose={this.handleClose}/>
+        <BookAppointmentModal />
         <div className="mui--text-center headerInfo">Make an appointment</div>
         <h3>Choose an appointment time</h3>
         <div>{this.renderTimeSlot()}</div>
@@ -54,17 +48,16 @@ class Appointment extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onRetrieveAppointments() {
-      dispatch(retrieveAppointments());
+    dispatch(retrieveAppointments());
   },
-  onUpdateModalState(modalState) {
-    dispatch(updateModalState(modalState));
-  }
+  onUpdateModalData(modalData) {
+    dispatch(updateModalData(modalData));
+}
 });
 
 function mapStateToProps(state) {
-return {
-  appointments: state.appointmentReducer,
-  modalState: state.modalStateReducer
-};
+  return {
+    appointments: state.appointmentReducer
+  };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Appointment);
