@@ -7,8 +7,12 @@ const cors = require('cors');
 const router = require('./routes');
 
 const port = process.env.PORT || 5001;
+const profile = process.env.PROFILE || "";
+console.log('CURRENT PROFILE:', profile);
 let app = express();
-app.use(cors());
+if(profile !== 'dev') {
+  app.use(cors());
+}
 app.use(bodyParser.json());
 router(app);
 
