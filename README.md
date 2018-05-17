@@ -1,5 +1,6 @@
 # APPOINTMENT
 <h4>An appointment application<br />
+demo: https://appointment-heroku.herokuapp.com/ (wait for 5-7 second for it to load due to free dyno from Heroku)
 
 ## There are 2 parts that this UI interacts with
 - Nodejs and express to serve data to UI
