@@ -14,3 +14,11 @@ exports.getAppointments = function() {
 exports.updateAppointment = function(id, updateAppointment) {
     return {"id": id, "data": updateAppointment};
 };
+
+/**
+ * allow user to book an appointment
+ * @param {*} appointment 
+ */
+exports.bookAppointment = function(appointment) {
+    return {"status": "success"};
+}

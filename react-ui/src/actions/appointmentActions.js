@@ -24,11 +24,12 @@ export const retrieveAppointments = () => dispatch => {
     });
 };
 
-export const bookAppointment = (id) => dispatch => {
+export const bookAppointment = (appointment) => dispatch => {
     const url = CONFIG.url;
-    const body = 
-    axios.put('/api/profile' + id, body).then(result => {
+    const body = {}
+    axios.post(url + '/api/appointment', appointment).then(result => {
         let response = result.data;
+        console.log('response:', response);
         // if (response.appointment.slots.length > 0) {
         //   dispatch({
         //     type: types.RETRIEVE_APPOINTMENT,

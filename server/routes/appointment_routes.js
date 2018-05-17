@@ -1,8 +1,11 @@
 const controller = require("../controller/appointment_controller");
 
 module.exports = function (app) {
-    //get initial appointments
+    //get initial list of appointments
     app.get('/api/appointments', controller.appointments);
+
+    //book an appointment from the list of appointments
+    app.post('/api/appointment', controller.appointment);
 
     //update appointment username and phone
     app.put('/api/appointments/:id', controller.update);
