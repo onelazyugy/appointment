@@ -6,10 +6,6 @@ import BookAppointmentModal from "./BookAppointmentModal";
 import _ from "lodash";
 
 class Appointment extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount = () => {
     this.props.onRetrieveAppointments();
   };
@@ -28,12 +24,12 @@ class Appointment extends Component {
   }
 
   renderTimeSlot = () => {
+    let appointmentSlot = "no appointment slot available";
     if (this.props.appointments.slots !== undefined && this.props.appointments.slots.length > 0) {
       const slots = this.props.appointments.slots;
-      return (
-        <AppointmentSlot slots={slots} onAppointmentSlotClicked={this.onAppointmentSlotClicked} />
-      );
+      appointmentSlot = <AppointmentSlot slots={slots} onAppointmentSlotClicked={this.onAppointmentSlotClicked} />
     }
+    return appointmentSlot;
   };
 
   render = () => {

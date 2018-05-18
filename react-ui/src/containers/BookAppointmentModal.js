@@ -1,11 +1,9 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { connect } from "react-redux";
 import { updateModalData, retrieveAppointments } from "../actions/appointmentActions";
-import _ from "lodash";
 import { bookAppointment } from "../util/ajaxUtil";
 
 class BookAppointmentModal extends React.Component {
@@ -66,7 +64,6 @@ class BookAppointmentModal extends React.Component {
         const phone = this.props.modalData.userInfo === undefined ? "" : this.props.modalData.userInfo.phone;
         const open = this.props.modalData.isOpen === undefined ? false : this.props.modalData.isOpen;
         return (
-
             <div>
                 <Dialog
                     title="Book an appointment"

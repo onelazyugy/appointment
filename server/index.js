@@ -5,11 +5,12 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const router = require('./routes');
-
 const port = process.env.PORT || 5001;
-const profile = process.env.PROFILE || "";
-console.log('CURRENT PROFILE:', profile);
+//set in heroku config vars
+const profile = process.env.PROFILE || "localhost";
+
 let app = express();
+//enable cors for localhost
 if(profile !== 'dev') {
   app.use(cors());
 }

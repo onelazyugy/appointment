@@ -7,9 +7,6 @@ module.exports = function (app) {
     //book an appointment from the list of appointments
     app.post('/api/appointment', controller.appointment);
 
-    //update appointment username and phone
-    app.put('/api/appointments/:id', controller.update);
-
     //health check
     app.get('/api/ping', function (req, res) {
         res.send({message: "pong!"});

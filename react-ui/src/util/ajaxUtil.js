@@ -3,7 +3,6 @@ import { CONFIG } from "../config/globals";
 
 export const bookAppointment = (callback, appointment) => {
     const url = CONFIG.url;
-    const body = {}
     axios.post(url + '/api/appointment', appointment).then(result => {
         let response = result.data;
         if (response.isSuccess) {
@@ -15,5 +14,6 @@ export const bookAppointment = (callback, appointment) => {
     })
     .catch(error => {
         console.error(error);
+        callback({isSuccess: false})
     });
 };
