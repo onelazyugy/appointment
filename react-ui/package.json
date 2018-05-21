@@ -27,5 +27,10 @@
     "lint": "node_modules/eslint/bin/eslint.js src",
     "build:local": "gulp local && react-scripts build",
     "build:dev": "gulp dev && react-scripts build"
+  },
+  "devDependencies": {
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "react-test-renderer": "^16.3.2"
   }
 }

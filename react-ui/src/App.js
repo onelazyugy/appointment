@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
-// import logo from './logo.svg';
-// import './App.css';
-// import axios from "axios";
-// import { CONFIG } from "./config/globals";
-
 import Appointment from "./containers/Appointment";
 import Container from 'muicss/lib/react/container';
 import "./style/base.css";
